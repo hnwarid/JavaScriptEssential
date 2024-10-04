@@ -9,6 +9,10 @@ function startTest() {
     document.getElementById('output').innerHTML = "";
     startTime = new Date().getTime()
 
+    // Functionality fix, clear and enable typing field when starting
+    document.getElementById('userInput').value = ""; 
+    document.getElementById('userInput').readOnly = false;
+    
     // Change button text and functionality 
     var button = document.getElementById('btn');
     button.innerHTML = "End Test";

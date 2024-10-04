@@ -28,7 +28,9 @@ function showBooks() {
         <p><strong>Book Name: </strong>${book.name}</p>
         <p><strong>Author Name: </strong>${book.authorName}</p>
         <p><strong>Book Description: </strong>${book.bookDescription}</p>
-        <p><strong>No. of pages: </strong>${book.pagesNumber} pages</p>`
+        <p><strong>No. of pages: </strong>${book.pagesNumber} pages</p>
+        <button onClick="deleteBook(${index})">Delete</button>`
+        // practice task add delete button on the line above
     );
     document.getElementById('books').innerHTML = booksDiv.join('')
 }
@@ -39,4 +41,10 @@ function clearInputs() {
     document.getElementById('authorName').value = '';
     document.getElementById('bookDescription').value = '';
     document.getElementById('pagesNumber').value = '';
+}
+
+// function to add delete button after a book is added 
+function deleteBook(bookIndex) {
+    books.splice(bookIndex, 1);
+    showBooks();
 }

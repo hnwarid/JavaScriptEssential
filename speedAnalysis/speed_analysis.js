@@ -12,7 +12,7 @@ function startTest() {
     // Functionality fix, clear and enable typing field when starting
     document.getElementById('userInput').value = ""; 
     document.getElementById('userInput').readOnly = false;
-    
+
     // Change button text and functionality 
     var button = document.getElementById('btn');
     button.innerHTML = "End Test";
@@ -30,6 +30,9 @@ function endTest() {
     var timeElapsed = (endTime - startTime) / 1000; // in seconds 
     var userTypedText = document.getElementById('userInput').value;
 
+    // Practice task add Total Length 
+    var totalLength = userTypedText.length;
+
     // Split the text using regex to count words correctly 
     var typedWords = userTypedText.split(/\s+/).filter(function (word) {
         return word !== "";
@@ -41,9 +44,10 @@ function endTest() {
         wpm = Math.round((typedWords/timeElapsed) * 60);
     }
 
-    // Display the results 
+    // Display the results. Practice task: added total length to the html
     var outputDiv = document.getElementById('output');
     outputDiv.innerHTML = "<h2>Typing Test Results:</h2>" + 
+        "<p>Total Length: " + totalLength + "</p>" +
         "<p>Words typed: " + typedWords + "</p>" + 
         "<p>Time Elapsed: " + timeElapsed.toFixed(2) + " seconds</p>" + 
         "<p>Words Per Minute (WPM): " + wpm + "</p>";

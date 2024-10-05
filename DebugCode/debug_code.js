@@ -2,13 +2,9 @@ function performOperation() {
     // Get user input from input fields 
     let num1 = parseInt(document.getElementById('input1').value);
     let num2 = parseInt(document.getElementById('input2').value);
-
-    // Practice task multiple operation 
     let operation = document.getElementById('operation').value;
 
-    //Check if inputs are valid numbers 
-    if (!isNaN(num1) && !isNaN(num2)) {
-        let result;
+    let result = calculateOperation(num1, num2, operation);
 
     // Perform the operation
         if (operation === 'multiply') {
@@ -23,29 +19,31 @@ function performOperation() {
     
     // Handle additional numbers and operations 
     let numInputs = document.getElementsByClassName('numInput');
-    let operationsSelect = document.getElementsByClassName('operationSelect');
+    let operationSelects = document.getElementsByClassName('operationSelect');
     for (let i = 0; i < numInputs.length; i++) {
         let currentNum = parseInt(numInputs[i].value);
-        let operation = operationsSelect[i].value;
-
-        if (operation === 'add') {
-            result += currentNum;
-        } else if (operation === 'substract') {
-            result -= currentNum;
-        } else if (operation === 'multiply') {
-            result *= currentNum;
-        } else if (operation === 'divide') {
-            result /= currentNum;
-        }
+        let currentOperation = operationSelects[i].value;
+        result = calculateOperation(result, currentNum, currentOperation)
     }
 
     // Display the result 
-        displayResult(result);
-    } else {
-        displayResult('Please enter valid numbers');
-    }
+    displayResult(result);
 }
 
+function calculateOperation(num1, num2, operation) {
+    switch (operation) {
+        case 'add': 
+            return num1 + num2;
+        case 'substract': 
+            return num1 - num2;
+        case 'multiply':
+            return num1 * num2;
+        case 'divide': 
+            return num1 / num2;
+        default:
+            return num1;
+    }
+}
 
 function addNumberOperation() {
     const container = document.getElementById('additionalInputs');

@@ -12,6 +12,7 @@
     <input type="number" id="input1"><br><br>
     <label for="input2">Enter Number 2:</label>
     <input type="number" id="input2"><br><br>
+
     <!-- Practice task  -->
     <label for="operation">Select operation:</label>
     <select id="operation">
@@ -20,6 +21,11 @@
         <option value="multiply">Multiply</option>
         <option value="divide">Divide</option>
     </select>
+
+    <!-- Container for additional numbers and operations -->
+    <div id="additionalInputs"></div>
+    <button onclick="addNumberOperation()">More</button>
+
     <button onclick="performOperation()">Perform Operation</button>
     <p id="result"></p>
     <script src="./debug_code.js"></script>

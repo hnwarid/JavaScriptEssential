@@ -20,12 +20,51 @@ function performOperation() {
         } else if (operation === 'substract') {
             result = substract(num1, num2)
         }
+    
+    // Handle additional numbers and operations 
+    let numInputs = document.getElementsByClassName('numInput');
+    let operationsSelect = document.getElementsByClassName('operationSelect');
+    for (let i = 0; i < numInputs.length; i++) {
+        let currentNum = parseInt(numInputs[i].value);
+        let operation = operationsSelect[i].value;
 
-        // Display the result 
+        if (operation === 'add') {
+            result += currentNum;
+        } else if (operation === 'substract') {
+            result -= currentNum;
+        } else if (operation === 'multiply') {
+            result *= currentNum;
+        } else if (operation === 'divide') {
+            result /= currentNum;
+        }
+    }
+
+    // Display the result 
         displayResult(result);
     } else {
         displayResult('Please enter valid numbers');
     }
+}
+
+
+function addNumberOperation() {
+    const container = document.getElementById('additionalInputs');
+
+    const numInput = document.createElement('input');
+    numInput.type = 'number';
+    numInput.className = 'numInput';
+    container.appendChild(numInput);
+
+    const operationSelect = document.createElement('select');
+    operationSelect.className = 'operationSelect';
+    operationSelect.innerHTML = `
+        <option value="add">Add</option>
+        <option value="substract">Substract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    `;
+    container.appendChild(operationSelect);
+    container.appendChild(document.createElement('br')); 
 }
 
 function multiply(a, b) {
